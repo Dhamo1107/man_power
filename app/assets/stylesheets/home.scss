@@ -1,0 +1,91 @@
+body {
+  background-color: #EAE7DC;
+}
+
+.top-bar {
+  width: 96%;
+  background-color: #895575;
+  color: whitesmoke;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.top-bar .user-details {
+  font-size: 16px;
+}
+
+.top-bar .app-info {
+  font-size: 16px;
+}
+
+.container {
+  margin-top: 70px; /* Adjusted for taller top bar */
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar-left {
+  width: 15%;
+  background-color: rgba(30, 2, 51, 0.3);
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.sidebar-left .nav {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-left .nav li {
+  margin-bottom: 15px;
+}
+
+.sidebar-left .nav li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.sidebar-left .nav li a:hover {
+  color: whitesmoke;
+}
+
+.content-center {
+  width: 65%;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #E7D3CC;
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sidebar-right {
+  width: 20%;
+  background-color: rgba(30, 2, 51, 0.3);
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  right: 0;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+.sidebar-right h3 {
+  margin-top: 0;
+  color: black;
+}
+
+.sidebar-right section {
+  margin-bottom: 20px;
+  color: black;
+}

@@ -7,10 +7,46 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+  <% if user_signed_in? %>
+    <div class="top-bar">
+      <div class="user-info">
+        <span>Welcome, <%= current_user.full_name %>!</span>
+        <%= link_to 'Edit Account', edit_user_registration_path, class: 'button' %> |
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'button', form: { data: { turbo: false } } %>
+      </div>
+      <div class="app-info">
+        <span>Total Users: <%= User.count %></span>
+      </div>
+    </div>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class="container">
+      <div class="sidebar-left">
+        <ul class="nav">
+          <%= render 'layouts/sidebar_links' %>
+        </ul>
+      </div>
+
+      <div class="content-center">
+        <%= yield %>
+      </div>
+
+      <div class="sidebar-right">
+        <h3>Community Help</h3>
+        <h3>Leaderboard</h3>
+        <h3>Found/Lost</h3>
+      </div>
+    </div>
+  <% else %>
+    <div class="auth-container">
+      <%= yield %>
+    </div>
+  <% end %>
   </body>
 </html>
