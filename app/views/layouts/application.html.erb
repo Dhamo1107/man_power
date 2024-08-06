@@ -8,25 +8,39 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
 
   <body>
+  <div class="alert-container">
+    <% if notice.present? %>
+      <div class="alert alert-success">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="alert alert-danger">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%= alert %>
+      </div>
+    <% end %>
+  </div>
+
   <% if user_signed_in? %>
     <div class="top-bar">
       <div class="user-info">
         <span>Welcome, <%= current_user.full_name %>!</span>
         <%= link_to 'Edit Account', edit_user_registration_path, class: 'button' %> |
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'button', form: { data: { turbo: false } } %>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' %>
       </div>
       <div class="app-info">
         <span>Total Users: <%= User.count %></span>
       </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="container">
+    <div class="container-area">
       <div class="sidebar-left">
         <ul class="nav">
           <%= render 'layouts/sidebar_links' %>

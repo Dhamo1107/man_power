@@ -3,14 +3,14 @@ body {
 }
 
 .top-bar {
-  width: 96%;
+  width: calc(100% - 20px);
   background-color: #895575;
   color: whitesmoke;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -27,9 +27,9 @@ body {
   font-size: 16px;
 }
 
-.container {
-  margin-top: 70px; /* Adjusted for taller top bar */
+.container-area {
   display: flex;
+  margin: 10px;
   min-height: 100vh;
 }
 
@@ -88,4 +88,48 @@ body {
 .sidebar-right section {
   margin-bottom: 20px;
   color: black;
+}
+
+.alert-container {
+  margin: 10px 10px 0px 10px;
+}
+
+.alert {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.alert-success {
+  background-color: #28a745;
+  border-left: 5px solid #218838;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+  border-left: 5px solid #c82333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
