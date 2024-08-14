@@ -429,3 +429,31 @@ h2 {
   border-color: #32a6d5;
   box-shadow: 0 0 5px rgba(50, 166, 213, 0.5);
 }
+
+.cancel-account-section {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.cancel-account-section div {
+  font-size: 1em;
+  color: #555555;
+}
+
+.cancel-account-section button {
+  background-color: #fd282f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.cancel-account-section button:hover {
+  background-color: #fa1f1f;
+}
