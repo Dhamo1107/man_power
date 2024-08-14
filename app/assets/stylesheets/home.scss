@@ -155,13 +155,6 @@ h2 {
   margin-bottom: 15px;
 }
 
-.field label {
-  font-weight: bold;
-  color: #555555;
-  display: block;
-  margin-bottom: 5px;
-}
-
 .field input[type="email"],
 .field input[type="password"] {
   width: 100%;
@@ -214,17 +207,21 @@ h2 {
 }
 
 .auth-links a {
-  display: block;
-  color: #32a6d5;
+  background-color: #5bc23e;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+  display: inline-block;
   text-decoration: none;
-  font-size: 1em;
   margin: 10px 0;
-  transition: color 0.3s;
 }
 
 .auth-links a:hover {
-  color: #2890b3;
-  text-decoration: underline;
+  background-color: #57b23e;
 }
 
 .auth-links button {
@@ -286,4 +283,149 @@ h2 {
 .side-link li a.active {
   background-color: #2d2c2c;
   color: #ffffff;
+}
+
+.page-title {
+  font-size: 2em;
+  color: #142D4D;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+
+.user-card-link {
+  text-decoration: none;
+  width: calc(33% - 40px);
+}
+
+.user-card {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.user-name {
+  font-size: 1.5em;
+  margin: 0 0 15px;
+  color: #ffffff;
+}
+
+.user-detail {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+.user-detail i {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .user-card-link {
+    width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .user-card-link {
+    width: 100%;
+  }
+}
+
+.sign-up-form {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sign-up-form .field {
+  margin-bottom: 0;
+}
+
+.sign-up-form .actions {
+  margin-top: 30px;
+}
+
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  font-weight: bold;
+  color: #555555;
+  display: block;
+  margin-bottom: -20px;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="number"],
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field input[type="password"]:focus,
+.field input[type="number"]:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: #32a6d5;
+  box-shadow: 0 0 5px rgba(50, 166, 213, 0.5);
+}
+
+.field .date-select {
+  display: flex;
+  gap: 10px;
+}
+
+.field .date-select select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.field .date-select select:focus {
+  outline: none;
+  border-color: #32a6d5;
+  box-shadow: 0 0 5px rgba(50, 166, 213, 0.5);
 }
