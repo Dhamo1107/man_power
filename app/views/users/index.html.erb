@@ -1,0 +1,14 @@
+<h3 class="page-title">Users</h3>
+
+<div class="users-list">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user), class: "user-card-link" do %>
+      <div class="user-card">
+        <h5 class="user-name"><%= user.full_name %></h5>
+        <p class="user-detail"><i class="fas fa-briefcase"></i> <%= user.profession %></p>
+        <p class="user-detail"><i class="fas fa-map-marker-alt"></i> <%= user.pin_code %></p>
+        <p class="user-detail"><i class="fas fa-phone-alt"></i> <%= user.phone_number %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
