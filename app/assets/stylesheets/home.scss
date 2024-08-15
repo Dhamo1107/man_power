@@ -368,7 +368,6 @@ h2 {
   margin-top: 30px;
 }
 
-
 .field {
   margin-bottom: 15px;
 }
@@ -645,4 +644,38 @@ h2 {
   margin-top: 10px;
   font-size: 0.9em;
   color: #555555;
+}
+
+.required-field::after {
+  content: "*";
+  color: red;
+  margin-left: 4px;
+}
+
+#error_explanation {
+  background-color: #f8d7da;
+  color: black;
+  border: 1px solid #f5c6cb;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#error_explanation h2 {
+  color: black;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#error_explanation ul {
+  padding-left: 20px;
+}
+
+#error_explanation ul li {
+  list-style-type: disc;
+  margin-bottom: 5px;
 }
