@@ -313,8 +313,9 @@ h2 {
 }
 
 .user-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #787a78 0%, #cec2bd 100%);
 }
 
 .user-name {
@@ -324,15 +325,11 @@ h2 {
 }
 
 .user-detail {
-  display: flex;
+  display: grid;
   align-items: center;
   font-size: 1.1em;
   margin: 5px 0;
-}
-
-.user-detail i {
-  margin-right: 10px;
-  font-size: 1.2em;
+  grid-template-columns: 30px 1fr;
 }
 
 @media (max-width: 768px) {
@@ -505,7 +502,7 @@ h2 {
   padding: 20px 30px;
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 800px;
   margin: 20px auto;
   width: 100%;
   border-left: 4px solid #545754;
@@ -546,9 +543,8 @@ h2 {
 
 .detail-item {
   display: grid;
-  grid-template-columns: 30px 120px 1fr; /* Set fixed widths for icons and labels, and flexible width for details */
+  grid-template-columns: 18px 150px 1fr; /* Set fixed widths for icons and labels, and flexible width for details */
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .user-details strong {
