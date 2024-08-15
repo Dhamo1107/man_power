@@ -33,7 +33,7 @@
 
       <div class="field">
         <%= f.label :profession_ids, "Select Professions", class: "required-field" %><br />
-        <%= f.drop_down :profession_ids, Profession.all, :id, :name, {}, { multiple: true } %>
+        <%= f.collection_select :profession_ids, Profession.all, :id, :name, {}, { multiple: true, id: "profession-select", class: "select2" } %>
       </div>
 
       <div class="field">

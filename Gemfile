@@ -49,6 +49,9 @@ gem 'jquery-rails'
 # For pgination
 gem 'pagy', '~> 9.0.5'
 
+#For drop down option:
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
+
 #For users authentication
 gem 'devise', '~> 4.9', '>= 4.9.2'
 

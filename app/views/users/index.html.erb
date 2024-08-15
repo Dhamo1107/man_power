@@ -3,7 +3,10 @@
     <%= link_to user_path(user), class: "user-card-link" do %>
       <div class="user-card">
         <h5 class="user-name"><%= user.full_name %></h5>
-        <p class="user-detail"><i class="fas fa-briefcase"></i> <%= user.profession %></p>
+        <p class="user-detail"><i class="fas fa-briefcase"></i>
+          <% user.professions.each do |profession| %>
+            <%= profession.name %><%= "," unless profession == user.professions.last %>
+          <% end %>
         <p class="user-detail"><i class="fas fa-map-marker-alt"></i> <%= user.pin_code %></p>
         <p class="user-detail"><i class="fas fa-phone-alt"></i> <%= user.phone_number %></p>
       </div>

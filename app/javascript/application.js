@@ -4,6 +4,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require home
+//= require select2
+//= require select2_initialization
 
 
 

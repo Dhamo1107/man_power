@@ -30,8 +30,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :profession, class: "required-field" %><br />
-    <%= f.text_field :profession %>
+    <%= f.label :profession_ids, "Select Professions", class: "required-field" %><br />
+    <%= f.collection_select :profession_ids, Profession.all, :id, :name, {}, { multiple: true, id: "profession-select", class: "select2" } %>
   </div>
 
   <div class="field">

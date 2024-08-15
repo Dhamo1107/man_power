@@ -4,7 +4,12 @@
     <i class="fas fa-envelope"></i> <strong>Email:</strong> <span><%= @user.email %></span>
   </div>
   <div class="detail-item">
-    <i class="fas fa-briefcase"></i> <strong>Profession:</strong> <span><%= @user.profession %></span>
+    <i class="fas fa-briefcase"></i> <strong>Profession:</strong>
+    <span>
+      <% @user.professions.each do |profession| %>
+        <%= profession.name %><%= "," unless profession == @user.professions.last %>
+      <% end %>
+    </span>
   </div>
   <div class="detail-item">
     <i class="fas fa-calendar-alt"></i> <strong>Experience Years:</strong> <span><%= @user.experience_years %></span>
