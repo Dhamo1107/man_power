@@ -46,6 +46,9 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 gem 'jquery-rails'
 
+# For pgination
+gem 'pagy', '~> 9.0.5'
+
 #For users authentication
 gem 'devise', '~> 4.9', '>= 4.9.2'
 

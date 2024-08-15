@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  include Pagy::Backend
   def index
-    @users = User.all
+    @pagy, @users = pagy(User.all)
   end
 
   def show

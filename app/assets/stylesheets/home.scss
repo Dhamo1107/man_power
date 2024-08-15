@@ -482,8 +482,8 @@ h2 {
 
 .app-info span {
   font-size: 1.1em;
-  background-color: #32a6d5;
-  color: #ffffff;
+  background-color: #e7e8e7;
+  color: black;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -598,4 +598,51 @@ h2 {
     grid-template-columns: 25px 100px 1fr;
     font-size: 0.9em;
   }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a,
+.pagination span {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #32a6d5;
+  color: #32a6d5;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.pagination a:hover,
+.pagination .active span {
+  background-color: #32a6d5;
+  color: white;
+}
+
+.pagination .disabled span {
+  color: #cccccc;
+  border-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555555;
 }
