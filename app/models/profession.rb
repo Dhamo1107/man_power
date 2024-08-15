@@ -6,4 +6,9 @@ class Profession < ApplicationRecord
   scope :search_by_name, ->(query) {
     where('name ILIKE ?', "%#{query}%")
   }
+
+  #=====FILTERS====================================================================================================
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end

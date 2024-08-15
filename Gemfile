@@ -55,6 +55,9 @@ gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 #For users authentication
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
+#For searching and filtering
+gem 'ransack'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

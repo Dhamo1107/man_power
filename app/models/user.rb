@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true, length: { in: 6..20 }
   validates_format_of :user_name, with: /\A[a-z0-9_]+\z/,
                       message: "can only contain lowercase letters, numbers, and underscores"
-  # validates :password, presence: true, length: { minimum: 6 }
   validates :phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "must be a 10-digit number" }
   validates :date_of_birth, presence: true
   validates :experience_years, presence: true
@@ -21,6 +20,15 @@ class User < ApplicationRecord
   validates :pin_code, presence: true, format: { with: /\A\d{6}\z/, message: "must be a 6-digit number" }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
   validate :must_have_at_least_one_profession
+
+  #=====FILTERS====================================================================================================
+  def self.ransackable_attributes(auth_object = nil)
+    %w[district experience_years full_name pin_code]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["professions"]
+  end
 
   private
   def must_have_at_least_one_profession
