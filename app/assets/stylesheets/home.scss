@@ -19,7 +19,7 @@ body {
   margin: 10px;
 }
 
-.top-bar .user-details {
+.top-bar {
   font-size: 16px;
 }
 
@@ -288,23 +288,25 @@ h2 {
 .users-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   gap: 20px;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .user-card-link {
   text-decoration: none;
   width: calc(33% - 40px);
+  padding-bottom: 20px;
 }
 
 .user-card {
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  background: linear-gradient(135deg, #828582 0%, #d5c7c2 100%);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #fff;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -449,4 +451,151 @@ h2 {
 
 .cancel-account-section button:hover {
   background-color: #fa1f1f;
+}
+
+.user-info, .app-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info span {
+  font-size: 1.2em;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.user-info a.button, .user-info .btn {
+  background-color: #e7e8e7;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-right: 10px;
+}
+
+.user-info a.button:hover, .user-info .btn:hover {
+  background-color: #d8d9d8;
+  box-shadow: 0 0 5px rgba(52, 51, 51, 0.5);
+}
+
+.app-info span {
+  font-size: 1.1em;
+  background-color: #32a6d5;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info, .app-info {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+}
+
+.user-details {
+  background-color: #f9f9f9;
+  padding: 20px 30px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  width: 100%;
+  border-left: 4px solid #545754;
+  background-image: linear-gradient(to right, #f7f7f7, #ffffff);
+}
+
+.user-details h4 {
+  color: black;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #545754;
+}
+
+.user-details p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .user-details {
+    padding: 15px 20px;
+  }
+
+  .user-details h4 {
+    font-size: 1.6em;
+  }
+
+  .user-details p {
+    font-size: 1em;
+  }
+
+  .user-details p i {
+    font-size: 1.1em;
+  }
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: 30px 120px 1fr; /* Set fixed widths for icons and labels, and flexible width for details */
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.user-details strong {
+  font-size: 1em;
+  margin: 10px 0;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.user-details strong {
+  margin-right: 10px;
+  font-weight: 600;
+  color: #555;
+}
+
+.detail-item i {
+  color: #545754;
+  margin-right: 10px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.detail-item strong {
+  color: #100f0f;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.detail-item span {
+  color: #333333;
+  font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+  .user-details {
+    padding: 15px 20px;
+  }
+
+  .user-details h4 {
+    font-size: 1.6em;
+  }
+
+  .detail-item {
+    grid-template-columns: 25px 100px 1fr;
+    font-size: 0.9em;
+  }
 }

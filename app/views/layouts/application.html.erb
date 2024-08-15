@@ -33,7 +33,7 @@
     <div class="top-bar">
       <div class="user-info">
         <span>Welcome, <%= current_user.full_name %>!</span>
-        <%= link_to 'Edit Account', edit_user_registration_path, class: 'button' %> |
+        <%= link_to 'Edit Account', edit_user_registration_path, class: 'button' %>
         <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' %>
       </div>
       <div class="app-info">
