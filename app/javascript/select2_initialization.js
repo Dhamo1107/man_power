@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#profession-select').select2({
-        placeholder: "Select Professions",
+        placeholder: "Search",
         allowClear: true,
         ajax: {
             url: '/professions/search',

@@ -690,3 +690,34 @@ h2 {
   padding: 20px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  max-height: 30px;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.select2-container--default .select2-selection--multiple {
+  max-height: 15px;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+  overflow-y: scroll;
+  overflow-x: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.mb-3 {
+  margin-bottom: 0px !important;
+}

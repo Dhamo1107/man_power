@@ -9,6 +9,6 @@ class Profession < ApplicationRecord
 
   #=====FILTERS====================================================================================================
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    ["id"]
   end
 end
