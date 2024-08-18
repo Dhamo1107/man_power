@@ -9,4 +9,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def search
+    @users = User.search_by_name(params[:q])
+    respond_to do |format|
+      format.json { render json: @users }
+    end
+  end
 end

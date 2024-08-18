@@ -23,12 +23,17 @@ class User < ApplicationRecord
 
   #=====FILTERS====================================================================================================
   def self.ransackable_attributes(auth_object = nil)
-    %w[district experience_years full_name pin_code]
+    %w[district experience_years full_name pin_code id]
   end
 
   def self.ransackable_associations(auth_object = nil)
     ["professions"]
   end
+
+  #=====SCOPES====================================================================================================
+  scope :search_by_name, ->(query) {
+    where('full_name ILIKE ?', "%#{query}%")
+  }
 
   private
   def must_have_at_least_one_profession
