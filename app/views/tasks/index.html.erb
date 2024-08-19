@@ -1,0 +1,27 @@
+<h2>Tasks Created by You</h2>
+<% if @created_tasks.any? %>
+  <ul>
+    <% @created_tasks.each do |task| %>
+      <li>
+        <%= link_to task.title, task_path(task) %>
+        - <%= task.status.humanize %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tasks created by you.</p>
+<% end %>
+
+<h2>Tasks Assigned to You</h2>
+<% if @assigned_tasks.any? %>
+  <ul>
+    <% @assigned_tasks.each do |task| %>
+      <li>
+        <%= link_to task.title, task_path(task) %>
+        - <%= task.status.humanize %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tasks assigned to you.</p>
+<% end %>
