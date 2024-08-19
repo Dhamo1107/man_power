@@ -288,15 +288,14 @@ h2 {
 .users-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  justify-content: flex-start;
+  gap: 28px;
+  padding: 20px 0px 20px 20px;
 }
 
 .user-card-link {
   text-decoration: none;
-  width: calc(33% - 40px);
+  width: calc(35% - 40px);
   padding-bottom: 20px;
 }
 
