@@ -6,8 +6,10 @@ class User < ApplicationRecord
 
   #=====ASSOCIATIONS====================================================================================================
   has_and_belongs_to_many :professions
+  has_many :created_tasks, class_name: 'Task', foreign_key: 'created_by_user_id', dependent: :destroy
+  has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assigned_to_user_id', dependent: :destroy
 
-  #=====VALIDATIONS====================================================================================================
+  #=====VALIDATIONS=====================================================================================================
   validates :full_name, presence: true
   validates :user_name, presence: true, uniqueness: true, length: { in: 6..20 }
   validates_format_of :user_name, with: /\A[a-z0-9_]+\z/,
@@ -21,7 +23,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
   validate :must_have_at_least_one_profession
 
-  #=====FILTERS====================================================================================================
+  #=====FILTERS=========================================================================================================
   def self.ransackable_attributes(auth_object = nil)
     %w[district experience_years full_name pin_code id]
   end

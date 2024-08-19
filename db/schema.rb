@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_15_125233) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_19_173543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_125233) do
     t.bigint "profession_id", null: false
     t.index ["profession_id", "user_id"], name: "index_professions_users_on_profession_id_and_user_id"
     t.index ["user_id", "profession_id"], name: "index_professions_users_on_user_id_and_profession_id", unique: true
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "created_by_user_id", null: false
+    t.bigint "assigned_to_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_to_user_id"], name: "index_tasks_on_assigned_to_user_id"
+    t.index ["created_by_user_id"], name: "index_tasks_on_created_by_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_125233) do
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
+  add_foreign_key "tasks", "users", column: "assigned_to_user_id"
+  add_foreign_key "tasks", "users", column: "created_by_user_id"
 end
