@@ -1,27 +1,33 @@
-<h2>Tasks Created by You</h2>
-<% if @created_tasks.any? %>
-  <ul>
-    <% @created_tasks.each do |task| %>
-      <li>
-        <%= link_to task.title, task_path(task) %>
-        - <%= task.status.humanize %>
-      </li>
+<div class="tasks-container">
+  <div class="task-section">
+    <h2>Tasks Created by You</h2>
+    <% if @created_tasks.any? %>
+      <div class="task-cards">
+        <% @created_tasks.each do |task| %>
+          <div class="task-card">
+            <h3><%= link_to task.title, task_path(task) %></h3>
+            <p>Status: <%= task.status.humanize %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No tasks created by you.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No tasks created by you.</p>
-<% end %>
+  </div>
 
-<h2>Tasks Assigned to You</h2>
-<% if @assigned_tasks.any? %>
-  <ul>
-    <% @assigned_tasks.each do |task| %>
-      <li>
-        <%= link_to task.title, task_path(task) %>
-        - <%= task.status.humanize %>
-      </li>
+  <div class="task-section">
+    <h2>Tasks Assigned to You</h2>
+    <% if @assigned_tasks.any? %>
+      <div class="task-cards">
+        <% @assigned_tasks.each do |task| %>
+          <div class="task-card">
+            <h3><%= link_to task.title, task_path(task) %></h3>
+            <p>Status: <%= task.status.humanize %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No tasks assigned to you.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No tasks assigned to you.</p>
-<% end %>
+  </div>
+</div>
