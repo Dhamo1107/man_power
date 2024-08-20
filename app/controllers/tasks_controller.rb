@@ -8,7 +8,18 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @assignee = User.find(params[:user_id])
+    if params[:user_id].present?
+      if params[:user_id].to_i == current_user.id
+        flash[:alert] = "You cannot create a task for yourself."
+        redirect_to users_path and return
+      else
+        # If the user_id is valid and not the current user, assign it to @assignee
+        @assignee = User.find(params[:user_id])
+      end
+    else
+      flash[:alert] = "No user selected for the task."
+      redirect_to users_path and return
+    end
   end
 
   def create
