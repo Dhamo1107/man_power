@@ -36,6 +36,7 @@ class User < ApplicationRecord
   scope :search_by_name, ->(query) {
     where('full_name ILIKE ?', "%#{query}%")
   }
+  scope :exclude_current_user, ->(user) { where.not(id: user.id) }
 
   private
   def must_have_at_least_one_profession

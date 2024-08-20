@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Pagy::Backend
   def index
-    @q = User.ransack(params[:q])
+    @q = User.exclude_current_user(current_user).ransack(params[:q])
     @pagy, @users = pagy(@q.result(distinct: true).includes(:professions))
     @search_url = users_path
   end
