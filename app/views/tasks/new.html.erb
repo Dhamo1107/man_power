@@ -11,10 +11,5 @@
 
   <%= form.hidden_field :assigned_to_user_id, value: @assignee.id %>
 
-  <div class="form-group">
-    <%= form.label :status %>
-    <%= form.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, {}, class: 'form-control' %>
-  </div>
-
   <%= form.submit 'Create Task', class: 'btn btn-primary' %>
 <% end %>
