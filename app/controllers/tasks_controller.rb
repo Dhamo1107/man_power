@@ -32,6 +32,9 @@ class TasksController < ApplicationController
   end
 
   def show
+    if @task.assigned_to_user_id == current_user.id && @task.status == 'created'
+      @task.update(status: 'viewed')
+    end
   end
 
   def edit
