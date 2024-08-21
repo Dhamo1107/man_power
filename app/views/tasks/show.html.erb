@@ -1,9 +1,24 @@
-<h1><%= @task.title %></h1>
-<p><%= @task.description %></p>
-<p>Status: <%= @task.status.humanize %></p>
-<p>Created by: <%= link_to @task.creator.full_name, user_path(@task.creator) %></p>
-<p>Assigned to: <%= link_to @task.assignee.full_name, user_path(@task.assignee) %></p>
+<div class="user-details">
+  <h4><i class="fas fa-tasks"></i> <%= @task.title %></h4>
 
-<%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-warning' %>
-<%= link_to 'Back to Tasks', tasks_path, class: 'btn btn-secondary' %>
-<%= link_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div class="detail-item">
+    <i class="fas fa-info-circle"></i> <strong>Description:</strong> <span><%= @task.description %></span>
+  </div>
+
+  <div class="detail-item">
+    <i class="fas fa-clipboard-list"></i> <strong>Status:</strong> <span class="status-<%= @task.status %>"><%= @task.status.humanize %></span>
+  </div>
+
+  <div class="detail-item">
+    <i class="fas fa-user"></i> <strong>Created by:</strong> <span><%= link_to @task.creator.full_name, user_path(@task.creator), class: 'user-link' %></span>
+  </div>
+
+  <div class="detail-item">
+    <i class="fas fa-user-tag"></i> <strong>Assigned to:</strong> <span><%= link_to @task.assignee.full_name, user_path(@task.assignee), class: 'user-link' %></span>
+  </div>
+
+  <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-warning' %>
+  <%= link_to 'Back to Tasks', tasks_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+</div>
+

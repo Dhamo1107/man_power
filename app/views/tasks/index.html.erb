@@ -1,33 +1,37 @@
 <div class="tasks-container">
   <div class="task-section">
-    <h2>Tasks Created by You</h2>
+    <h5>Tasks Created by You</h5>
     <% if @created_tasks.any? %>
       <div class="task-cards">
         <% @created_tasks.each do |task| %>
-          <div class="task-card">
-            <h3><%= link_to task.title, task_path(task) %></h3>
-            <p>Status: <%= task.status.humanize %></p>
-          </div>
+          <%= link_to task_path(task), class: "task-card-link" do %>
+            <div class="task-card">
+              <h3><%= task.title %></h3>
+              <p>Status: <%= task.status.humanize %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% else %>
-      <p>No tasks created by you.</p>
+      <p>No tasks found</p>
     <% end %>
   </div>
 
   <div class="task-section">
-    <h2>Tasks Assigned to You</h2>
+    <h5>Tasks Assigned to You</h5>
     <% if @assigned_tasks.any? %>
       <div class="task-cards">
         <% @assigned_tasks.each do |task| %>
-          <div class="task-card">
-            <h3><%= link_to task.title, task_path(task) %></h3>
-            <p>Status: <%= task.status.humanize %></p>
-          </div>
+          <%= link_to task_path(task), class: "task-card-link" do %>
+            <div class="task-card">
+              <h3><%= task.title %></h3>
+              <p>Status: <%= task.status.humanize %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% else %>
-      <p>No tasks assigned to you.</p>
+      <p>No tasks found</p>
     <% end %>
   </div>
 </div>
