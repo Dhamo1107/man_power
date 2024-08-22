@@ -58,6 +58,12 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 #For searching and filtering
 gem 'ransack'
 
+#To find un used methods in the application
+gem 'un_used_methods', '~> 0.1.3'
+
+#To handle user authorisation
+gem 'pundit', '~> 2.3.2'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

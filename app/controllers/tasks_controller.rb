@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy]
+  before_action :set_task, only: %i[show edit update destroy update_status]
 
   def index
     @created_tasks = current_user.created_tasks.order(created_at: :desc)
@@ -51,6 +51,18 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_path, notice: 'Task was successfully deleted.'
+  end
+
+  def update_status
+    authorize @task, :update_status?
+
+    if @task.update(status: params[:task][:status])
+      flash[:notice] = "Task status updated successfully."
+    else
+      flash[:alert] = "Failed to update task status."
+    end
+
+    redirect_to task_path(@task)
   end
 
   private

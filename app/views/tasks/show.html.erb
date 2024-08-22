@@ -16,9 +16,29 @@
   <div class="detail-item">
     <i class="fas fa-user-tag"></i> <strong>Assigned to:</strong> <span><%= link_to @task.assignee.full_name, user_path(@task.assignee), class: 'user-link' %></span>
   </div>
-  
+
+  <div class="task-actions">
+    <% if policy(@task).update_status? %>
+      <% if policy(@task).permitted_statuses.include?('accepted') && @task.status == 'viewed' %>
+        <%= button_to 'Accept', update_status_task_path(@task, task: { status: 'accepted' }), method: :patch, class: 'btn task-btn btn-outline-success' %>
+      <% end %>
+
+      <% if policy(@task).permitted_statuses.include?('cancelled') && @task.status == 'viewed' %>
+        <%= button_to 'Cancel', update_status_task_path(@task, task: { status: 'cancelled' }), method: :patch, class: 'btn task-btn btn-outline-dark' %>
+      <% end %>
+
+      <% if policy(@task).permitted_statuses.include?('in_progress') && @task.status == 'accepted' %>
+        <%= button_to 'Start Task', update_status_task_path(@task, task: { status: 'in_progress' }), method: :patch, class: 'btn task-btn btn-outline-success' %>
+      <% end %>
+
+      <% if policy(@task).permitted_statuses.include?('completed') && @task.status == 'in_progress' %>
+        <%= button_to 'Complete', update_status_task_path(@task, task: { status: 'completed' }), method: :patch, class: 'btn task-btn btn-outline-dark' %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="nav-actions">
-    <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-warning' %>
+    <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary' %>
     <%= link_to 'Back to Tasks', tasks_path, class: 'btn btn-secondary' %>
     <%= link_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </div>
