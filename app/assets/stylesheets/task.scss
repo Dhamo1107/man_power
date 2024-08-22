@@ -63,3 +63,41 @@
 .task-section h5{
   text-align: center;
 }
+
+.user-link {
+  color: #2d65a1;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.user-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #306db0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.user-link:hover {
+  color: #0056b3;
+  padding-bottom: 4px;
+}
+
+.user-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-actions {
+  padding-top: 15px;
+}
