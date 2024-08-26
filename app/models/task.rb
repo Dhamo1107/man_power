@@ -5,16 +5,20 @@ class Task < ApplicationRecord
 
   #=====ENUMS===========================================================================================================
   enum status: { created: 0, viewed: 1, accepted: 2, in_progress: 3, completed: 4, cancelled: 5 }
+  enum priority: { low: 0, medium: 1, high: 2 }
 
   #=====VALIDATIONS=====================================================================================================
   validates :title, presence: true, length: { maximum: 255 }
   validates :description, presence: true
   validates :status, inclusion: { in: statuses.keys }
+  validates :priority, presence: true
+  validates :due_date, presence: true
   validate :assignee_is_not_creator
   validate :status_transition_is_valid
 
   #=====CALLBACKS=======================================================================================================
   before_create :set_default_status
+  before_save :set_completion_date, if: :status_changed_to_completed?
 
   private
   def assignee_is_not_creator
@@ -42,5 +46,13 @@ class Task < ApplicationRecord
         errors.add(:status, "cannot transition from #{status_was.humanize} to #{status.humanize}")
       end
     end
+  end
+
+  def status_changed_to_completed?
+    status_changed? && status == 'completed'
+  end
+
+  def set_completion_date
+    self.completion_date = Time.current
   end
 end
