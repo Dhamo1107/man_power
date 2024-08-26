@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       end
     else
       flash[:alert] = "No user selected for the task."
-      redirect_to users_path and return
+      redirect_to users_path
     end
   end
 
@@ -72,6 +72,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :assigned_to_user_id, :status)
+    params.require(:task).permit(:title, :description, :assigned_to_user_id, :status, :priority, :due_date, :comments)
   end
 end
