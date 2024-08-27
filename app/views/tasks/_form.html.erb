@@ -14,10 +14,10 @@
     <%= form.select :priority, Task.priorities.keys.map { |priority| [priority.humanize, priority] }, {}, class: 'form-control', required: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :due_date, class: "required-field" %><br />
-    <div class="date-select">
-      <%= form.date_select :due_date, start_year: 2024, end_year: Date.today.year, class: 'form-control', required: true %>
+    <div class="field">
+      <%= form.datetime_local_field :due_date, value: @task.due_date&.strftime('%Y-%m-%dT%H:%M'), class: 'form-control', required: true %>
     </div>
   </div>
 
