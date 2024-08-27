@@ -38,6 +38,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
+    @assignee = @task.assigned_to_user_id.present? ? User.find(@task.assigned_to_user_id) : nil
   end
 
   def update
