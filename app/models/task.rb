@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   #=====ASSOCIATIONS====================================================================================================
   belongs_to :creator, class_name: 'User', foreign_key: 'created_by_user_id'
   belongs_to :assignee, class_name: 'User', foreign_key: 'assigned_to_user_id'
+  has_one :rating, dependent: :destroy
 
   #=====ENUMS===========================================================================================================
   enum status: { created: 0, viewed: 1, accepted: 2, in_progress: 3, completed: 4, cancelled: 5 }

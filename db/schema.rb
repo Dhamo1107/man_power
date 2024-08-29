@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_26_145719) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_29_175313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_145719) do
     t.bigint "profession_id", null: false
     t.index ["profession_id", "user_id"], name: "index_professions_users_on_profession_id_and_user_id"
     t.index ["user_id", "profession_id"], name: "index_professions_users_on_user_id_and_profession_id", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_ratings_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -68,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_26_145719) do
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
+  add_foreign_key "ratings", "tasks"
   add_foreign_key "tasks", "users", column: "assigned_to_user_id"
   add_foreign_key "tasks", "users", column: "created_by_user_id"
 end
