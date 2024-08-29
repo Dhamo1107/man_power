@@ -20,6 +20,9 @@ class Task < ApplicationRecord
   before_create :set_default_status
   before_save :set_completion_date, if: :status_changed_to_completed?
 
+  #=====SCOPES==========================================================================================================
+  scope :tasks_completed, ->(user) { where(assigned_to_user_id: user.id, status: 'completed').count }
+
   private
   def assignee_is_not_creator
     if assignee == creator
