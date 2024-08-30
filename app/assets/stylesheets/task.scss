@@ -121,3 +121,29 @@
 .form-group {
   padding-bottom: 10px;
 }
+
+.star-rating {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: left;
+  overflow: hidden;
+  flex-direction: row-reverse;
+  position: relative;
+}
+
+.star-rating .star {
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star-rating .star:hover,
+.star-rating .star:hover ~ .star,
+.star-rating input[type="radio"]:checked ~ .star {
+  color: #FFD700;
+}
+
+.hidden-radio {
+  display: none;
+}

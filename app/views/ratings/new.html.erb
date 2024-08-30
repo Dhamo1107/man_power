@@ -1,0 +1,33 @@
+<h4>Rate the Task Completed by <%= @task.assignee.full_name %></h4>
+
+<%= form_with model: [@task, @rating], url: task_rating_path(@task), local: true do |form| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h5>The following errors prevented the rating from being saved:</h5>
+      <ul>
+        <% @rating.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :rating, "Rate the Task (1-5)", class: "required-field" %>
+    <div class="star-rating">
+      <% 5.downto(1) do |star| %> <!-- Reverse the order -->
+        <%= form.radio_button :rating, star, id: "star-#{star}", class: "hidden-radio" %>
+        <label for="star-<%= star %>" class="star">
+          <i class="fas fa-star"></i>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :comment, "Leave a Comment (Optional)" %>
+    <%= form.text_area :comment, class: 'form-control', rows: 4, placeholder: "Share your experience..." %>
+  </div>
+
+  <%= form.submit 'Submit Rating', class: 'btn btn-primary' %>
+<% end %>
