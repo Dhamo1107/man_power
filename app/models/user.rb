@@ -37,6 +37,12 @@ class User < ApplicationRecord
     where('full_name ILIKE ?', "%#{query}%")
   }
   scope :exclude_current_user, ->(user) { where.not(id: user.id) }
+  scope :average_rating, ->(user_id) {
+    joins(assigned_tasks: :rating)
+      .where(id: user_id)
+      .average('ratings.rating')
+      .to_f.round(2)
+  }
 
   private
   def must_have_at_least_one_profession

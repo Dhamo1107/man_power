@@ -36,6 +36,25 @@
     <i class="fas fa-check-circle"></i> <strong>Tasks completed:</strong> <span><%= Task.tasks_completed(@user) %></span>
   </div>
 
+  <div class="detail-item">
+    <i class="fas fa-star"></i> <strong>Average Rating:</strong>
+    <span>
+      <% if @average_rating.positive? %>
+        <%= @average_rating %>/5
+        <%# @average_rating.floor.times { %>
+<!--          <i class="fas fa-star"></i>-->
+        <%# } %>
+        <%# if (@average_rating - @average_rating.floor).between?(0.25, 0.75) %>
+<!--          <i class="fas fa-star-half-alt"></i>-->
+        <%# elsif @average_rating > @average_rating.floor %>
+<!--          <i class="fas fa-star"></i>-->
+        <%# end %>
+      <% else %>
+        No ratings yet
+      <% end %>
+    </span>
+  </div>
+
   <div class="nav-actions">
     <%= link_to 'Create Task', new_task_path(user_id: @user.id), class: 'btn btn-success' %>
   </div>

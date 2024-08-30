@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @average_rating = User.average_rating(@user.id)
   end
 
   def search
