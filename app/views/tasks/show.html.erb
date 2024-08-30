@@ -33,6 +33,20 @@
     <div class="detail-item">
       <i class="fas fa-check-circle"></i> <strong>Completed at:</strong> <span><%= format_datetime(@task.completion_date) %></span>
     </div>
+
+    <% if @task.rating.present? %>
+      <div class="detail-item">
+        <i class="fas fa-star"></i> <strong>Rating:</strong> <span><% @task.rating.rating.times { %> <i class="fas fa-star"></i><% } %><%= @task.rating.rating %>/5</span>
+
+        <% if @task.rating.comment.present? %>
+          <div class="detail-item">
+            <i class="fas fa-comment"></i> <strong>Comment:</strong> <span><%= @task.rating.comment %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to 'Rate Task', new_task_rating_path(@task), class: 'btn btn-success' %>
+    <% end %>
   <% end %>
 
   <div class="task-actions">
