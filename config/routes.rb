@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     member do
       patch :update_status
     end
+    resource :rating, only: [:new, :create]
   end
 
 end
