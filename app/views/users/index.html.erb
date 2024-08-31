@@ -10,7 +10,13 @@
           <% end %>
         </p>
         <p class="user-detail"><i class="fas fa-map-marker-alt"></i> <%= user.pin_code %></p>
-        <p class="user-detail"><i class="fas fa-phone-alt"></i> <%= user.phone_number %></p>
+        <p class="user-detail"><i class="fas fa-star"></i>
+          <% if User.average_rating(user.id).positive? %>
+            <%= User.average_rating(user.id) %>/5
+          <% else %>
+            No ratings yet
+          <% end %>
+        </p>
       </div>
     <% end %>
   <% end %>
