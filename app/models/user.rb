@@ -44,6 +44,10 @@ class User < ApplicationRecord
       .to_f.round(2)
   }
 
+  def task_created_by_current_user?(current_user)
+    assigned_tasks.where(created_by_user_id: current_user.id).exists?
+  end
+
   private
   def must_have_at_least_one_profession
     if professions.empty?

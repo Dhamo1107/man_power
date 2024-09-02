@@ -30,5 +30,8 @@
 
   <div class="nav-actions">
     <%= form.submit 'Submit', class: 'btn btn-primary' %>
+    <% if @task.persisted? %>
+      <%= link_to 'Back to Task', task_path(@task), class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 <% end %>

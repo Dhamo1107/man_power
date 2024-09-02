@@ -300,7 +300,7 @@ h2, h4 {
 }
 
 .user-card {
-  background: linear-gradient(135deg, #aeb2ae 0%, #d5c7c2 100%);
+  background: linear-gradient(135deg, #ececec 0%, #ffffff 100%);
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -322,12 +322,12 @@ h2, h4 {
 .user-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #929492 0%, #cec2bd 100%);
+  background: linear-gradient(135deg, #dbdcdb 0%, #e0d9d6 100%);
 }
 
 .user-name {
   font-size: 1.5em;
-  color: #ffffff;
+  color: #484545;
 }
 
 .user-detail {
@@ -683,7 +683,7 @@ h2, h4 {
 }
 
 .search-form-container {
-  background-color: #c5beba;
+  background-color: #d5d3d3;
   margin: 0px 20px;
   border-radius: 5px;
   padding: 20px;
