@@ -39,7 +39,11 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    @assignee = @task.assigned_to_user_id.present? ? User.find(@task.assigned_to_user_id) : nil
+    if @task.completed?
+      redirect_to task_path(@task), flash: { alert: 'You cannot edit a completed task.' }
+    else
+      @assignee = @task.assigned_to_user_id.present? ? User.find(@task.assigned_to_user_id) : nil
+    end
   end
 
   def update

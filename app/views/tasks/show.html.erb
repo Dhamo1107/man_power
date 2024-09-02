@@ -70,7 +70,9 @@
   </div>
 
   <div class="nav-actions">
-    <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary' %>
+    <% if !@task.completed? %>
+      <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-primary' %>
+    <% end %>
     <%= link_to 'Back to Tasks', tasks_path, class: 'btn btn-secondary' %>
     <%= link_to 'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </div>
