@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @created_tasks = current_user.created_tasks.includes(:assignee).order(created_at: :desc)
-    @assigned_tasks = current_user.assigned_tasks.includes(:assignee).order(created_at: :desc)
+    @assigned_tasks = current_user.assigned_tasks.includes(:creator).order(created_at: :desc)
   end
 
   def new
