@@ -35,7 +35,7 @@ body {
 
 .sidebar-left {
   width: 15%;
-  background-color: #D9D4D1;
+  background-color: #efffe0;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
@@ -64,7 +64,7 @@ body {
   width: 65%;
   padding: 20px;
   border-radius: 4px;
-  background-color: #F0EDEE;
+  background-color: #e5f1f7;
   color: black;
   margin-left: 10px;
   margin-right: 10px;
@@ -72,7 +72,7 @@ body {
 
 .sidebar-right {
   width: 20%;
-  background-color: #D9D4D1;
+  background-color: #efffe0;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   right: 0;
@@ -263,13 +263,13 @@ h2, h4 {
 .side-link li a {
   display: block;
   padding: 10px 20px;
-  background-color: #545754;
+  background-color: #e6c3f8;
   text-align: left;
   color: #ECF0F1;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
-  border-radius: 4px;
+  border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -296,7 +296,6 @@ h2, h4 {
 .user-card-link {
   text-decoration: none;
   width: calc(35% - 40px);
-  padding-bottom: 20px;
 }
 
 .user-card {
