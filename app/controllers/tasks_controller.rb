@@ -1,8 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy update_status]
 
-  def index
+  def created
     @created_tasks = current_user.created_tasks.includes(:assignee).order(created_at: :desc)
+  end
+
+  def assigned
     @assigned_tasks = current_user.assigned_tasks.includes(:creator).order(created_at: :desc)
   end
 

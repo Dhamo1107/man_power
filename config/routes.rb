@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
+    collection do
+      get :created
+      get :assigned
+    end
     member do
       patch :update_status
     end
