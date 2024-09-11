@@ -1,20 +1,16 @@
 <%= render 'layouts/search_form' %>
 
 <div class="users-list">
-  <% if @assigned_tasks.any? %>
-      <% @assigned_tasks.each do |task| %>
-        <%= link_to task_path(task), class: "user-card-link" do %>
-          <div class="user-card">
-            <h3><%= task.title %></h3>
-            <p class="user-detail" title="Status"><i class="fas fa-clipboard-list"></i> <%= task.status.humanize %></p>
-            <p class="user-detail" title="Priority"><i class="fas fa-flag"></i> <%= task.priority.humanize %></p>
-            <p class="user-detail" title="Due Date"><i class="fas fa-calendar-check"></i> <%= format_datetime(task.due_date) %></p>
-            <p class="user-detail" title="Created By"><i class="fas fa-user"></i> <%= task.creator.full_name %></p>
-          </div>
-        <% end %>
-      <% end %>
-  <% else %>
-    <p>No tasks found</p>
+  <% @assigned_tasks.each do |task| %>
+    <%= link_to task_path(task), class: "user-card-link" do %>
+      <div class="user-card">
+        <h3><%= task.title %></h3>
+        <p class="user-detail" title="Status"><i class="fas fa-clipboard-list"></i> <%= task.status.humanize %></p>
+        <p class="user-detail" title="Priority"><i class="fas fa-flag"></i> <%= task.priority.humanize %></p>
+        <p class="user-detail" title="Due Date"><i class="fas fa-calendar-check"></i> <%= format_datetime(task.due_date) %></p>
+        <p class="user-detail" title="Created By"><i class="fas fa-user"></i> <%= task.creator.full_name %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
