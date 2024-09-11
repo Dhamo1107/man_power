@@ -1,30 +1,51 @@
 <div class="search-form-container">
   <%= search_form_for @q, url: @search_url, method: :get do |f| %>
     <div class="row">
-      <div class="col-md-2">
-        <%= f.label :id_in, "Name", class: "form-label" %>
-        <%= f.collection_select :id_in, User.all, :id, :full_name, {}, { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
-      </div>
+      <% if cname? == 'users' %>
+        <div class="col-md-2">
+          <%= f.label :id_in, "Name", class: "form-label" %>
+          <%= f.collection_select :id_in, User.all, :id, :full_name, {}, { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
+        </div>
 
-      <div class="col-md-2">
-        <%= f.label :professions_id_in, "Profession", class: "form-label" %>
-        <%= f.collection_select :professions_id_in, Profession.all, :id, :name, {}, { multiple: true, id: "profession-select", class: "select2 form-control form-control-sm" } %>
-      </div>
+        <div class="col-md-2">
+          <%= f.label :professions_id_in, "Profession", class: "form-label" %>
+          <%= f.collection_select :professions_id_in, Profession.all, :id, :name, {}, { multiple: true, id: "profession-select", class: "select2 form-control form-control-sm" } %>
+        </div>
 
-      <div class="col-md-2">
-        <%= f.label :experience_years_gteq, "Experience", class: "form-label" %>
-        <%= f.number_field :experience_years_gteq, class: "form-control form-control-sm" %>
-      </div>
+        <div class="col-md-2">
+          <%= f.label :experience_years_gteq, "Experience", class: "form-label" %>
+          <%= f.number_field :experience_years_gteq, class: "form-control form-control-sm" %>
+        </div>
 
-      <div class="col-md-2">
-        <%= f.label :pin_code_eq, "Pin Code", class: "form-label" %>
-        <%= f.text_field :pin_code_eq, class: "form-control form-control-sm" %>
-      </div>
+        <div class="col-md-2">
+          <%= f.label :pin_code_eq, "Pin Code", class: "form-label" %>
+          <%= f.text_field :pin_code_eq, class: "form-control form-control-sm" %>
+        </div>
 
-      <div class="col-md-2">
-        <%= f.label :district_eq, "District", class: "form-label" %>
-        <%= f.text_field :district_eq, class: "form-control form-control-sm" %>
-      </div>
+        <div class="col-md-2">
+          <%= f.label :district_eq, "District", class: "form-label" %>
+          <%= f.text_field :district_eq, class: "form-control form-control-sm" %>
+        </div>
+
+      <% elsif cname? == 'tasks'%>
+        <% if aname? == 'assigned'%>
+          <div class="col-md-2">
+            <%= f.label :created_by_user_id_in, 'Created By' %>
+            <%= f.collection_select :created_by_user_id_in, User.all, :id, :full_name,
+                                    { prompt: 'Select User' },
+                                    { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
+          </div>
+        <% end %>
+
+        <% if aname? == 'created' %>
+          <div class="col-md-2">
+            <%= f.label :assigned_to_user_id_in, 'Assigned To' %>
+            <%= f.collection_select :assigned_to_user_id_in, User.all, :id, :full_name,
+                         { prompt: 'Select User' },
+                         { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <div class="row">
       <div class="col">

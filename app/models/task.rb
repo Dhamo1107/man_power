@@ -17,6 +17,15 @@ class Task < ApplicationRecord
   validate :assignee_is_not_creator
   validate :status_transition_is_valid
 
+  #=====FILTERS=========================================================================================================
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id created_by_user_id assigned_to_user_id created_at updated_at priority due_date status]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[creator assignee]
+  end
+
   #=====CALLBACKS=======================================================================================================
   before_create :set_default_status
   before_save :set_completion_date, if: :status_changed_to_completed?

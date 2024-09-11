@@ -1,12 +1,19 @@
 class TasksController < ApplicationController
+
+  include Pagy::Backend
+
   before_action :set_task, only: %i[show edit update destroy update_status]
 
   def created
-    @created_tasks = current_user.created_tasks.includes(:assignee).order(created_at: :desc)
+    @q = Task.where(created_by_user_id: current_user.id).ransack(params[:q])
+    @pagy, @created_tasks = pagy(@q.result(distinct: true).includes(:assignee).order(created_at: :desc))
+    @search_url = created_tasks_path
   end
 
   def assigned
-    @assigned_tasks = current_user.assigned_tasks.includes(:creator).order(created_at: :desc)
+    @q = Task.where(assigned_to_user_id: current_user.id).ransack(params[:q])
+    @pagy, @assigned_tasks = pagy(@q.result(distinct: true).includes(:creator).order(created_at: :desc))
+    @search_url = assigned_tasks_path
   end
 
   def new
