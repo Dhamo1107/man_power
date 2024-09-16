@@ -92,3 +92,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: var(--bs-border-width) solid var(--bs-border-color) !important;
+  outline: none !important;
+}
+
+.select2-container .select2-selection--multiple {
+    min-height: 30px !important;
+}
