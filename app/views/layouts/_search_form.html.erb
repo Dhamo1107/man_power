@@ -33,7 +33,7 @@
             <%= f.label :created_by_user_id_in, 'Created By' %>
             <%= f.collection_select :created_by_user_id_in, User.all, :id, :full_name,
                                     { prompt: 'Select User' },
-                                    { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
+                                    { multiple: true, id: "user-full-name", class: "form-control form-control-sm" } %>
           </div>
         <% end %>
 
@@ -42,9 +42,39 @@
             <%= f.label :assigned_to_user_id_in, 'Assigned To' %>
             <%= f.collection_select :assigned_to_user_id_in, User.all, :id, :full_name,
                          { prompt: 'Select User' },
-                         { multiple: true, id: "user-full-name", class: "select2 form-control form-control-sm" } %>
+                         { multiple: true, id: "user-full-name", class: "form-control form-control-sm" } %>
           </div>
         <% end %>
+
+        <div class="col-md-2">
+          <%= f.label :status_eq, "Status" %>
+          <%= f.select :status_eq, Task.statuses.keys.map { |status| [status.titleize, Task.statuses[status]] }, { include_blank: 'All' }, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.label :priority_eq, "Priority" %>
+          <%= f.select :priority_eq, Task.priorities.keys.map { |priority| [priority.titleize, Task.priorities[priority]] }, { include_blank: 'All' }, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.label :created_at_gteq, "Created From" %>
+          <%= f.date_field :created_at_gteq, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.label :created_at_lteq, "Created To" %>
+          <%= f.date_field :created_at_lteq, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.label :due_date_gteq, "Due From" %>
+          <%= f.date_field :due_date_gteq, class: 'form-control form-control-sm' %>
+        </div>
+
+        <div class="col-md-2">
+          <%= f.label :due_date_lteq, "Due To" %>
+          <%= f.date_field :due_date_lteq, class: 'form-control form-control-sm' %>
+        </div>
       <% end %>
     </div>
     <div class="row">

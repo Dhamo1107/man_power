@@ -19,7 +19,7 @@ class Task < ApplicationRecord
 
   #=====FILTERS=========================================================================================================
   def self.ransackable_attributes(auth_object = nil)
-    %w[id created_by_user_id assigned_to_user_id created_at updated_at priority due_date status]
+    %w[created_by_user_id assigned_to_user_id created_at due_date priority status]
   end
 
   def self.ransackable_associations(auth_object = nil)
