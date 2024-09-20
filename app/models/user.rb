@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :professions
   has_many :created_tasks, class_name: 'Task', foreign_key: 'created_by_user_id', dependent: :destroy
   has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assigned_to_user_id', dependent: :destroy
+  has_many :discussions
+  has_many :comments
 
   #=====VALIDATIONS=====================================================================================================
   validates :full_name, presence: true

@@ -27,4 +27,8 @@ Rails.application.routes.draw do
     resource :rating, only: [:new, :create]
   end
 
+  resources :discussions do
+    resources :comments
+  end
+
 end
