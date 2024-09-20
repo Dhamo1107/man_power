@@ -61,33 +61,13 @@ body {
 }
 
 .content-center {
-  width: 65%;
+  width: 85%;
   padding: 20px;
   border-radius: 4px;
   background-color: #e5f1f7;
   color: black;
   margin-left: 10px;
   margin-right: 10px;
-}
-
-.sidebar-right {
-  width: 20%;
-  background-color: #efffe0;
-  padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-  right: 0;
-  overflow-y: auto;
-  border-radius: 4px;
-}
-
-.sidebar-right h3 {
-  margin-top: 0;
-  color: black;
-}
-
-.sidebar-right section {
-  margin-bottom: 20px;
-  color: black;
 }
 
 .alert-container {
@@ -290,7 +270,7 @@ h2, h4 {
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 28px;
-  padding: 20px 0px 20px 20px;
+  padding: 20px 16px 20px 20px;
 }
 
 .user-card-link {
