@@ -1,0 +1,13 @@
+<h1>Discussions</h1>
+
+<%= link_to 'Start a New Discussion', new_discussion_path, class: 'btn btn-primary' %>
+
+<ul>
+  <% @discussions.each do |discussion| %>
+    <li>
+      <h2><%= link_to discussion.title, discussion_path(discussion) %></h2>
+      <p><%= truncate(discussion.body, length: 100) %></p>
+      <p>Posted by: <%= discussion.user.full_name %> | <%= time_ago_in_words(discussion.created_at) %> ago</p>
+    </li>
+  <% end %>
+</ul>
