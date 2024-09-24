@@ -5,16 +5,19 @@
   <i class="fas fa-clock"></i> <%= time_ago_in_words(@discussion.created_at) %> ago
 </p>
 
-<% if @discussion.user == current_user %>
-  <div class="discussion-actions">
+<div class="discussion-actions">
+  <% if policy(@discussion).update? %>
     <%= link_to edit_discussion_path(@discussion), class: 'btn btn-secondary btn-sm' do %>
       <i class="fas fa-edit"></i>
     <% end %>
+  <% end %>
+
+  <% if policy(@discussion).destroy? %>
     <%= link_to discussion_path(@discussion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <hr>
 <br>
@@ -30,16 +33,19 @@
         <i class="fas fa-clock"></i> <%= time_ago_in_words(comment.created_at) %> ago
       </p>
 
-      <% if comment.user == current_user %>
-        <div class="comment-actions">
-          <%= link_to edit_discussion_comment_path(@discussion, comment), class: 'btn btn-secondary btn-sm' do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
+      <div class="comment-actions">
+        <% if policy(comment).update? %>
+            <%= link_to edit_discussion_comment_path(@discussion, comment), class: 'btn btn-secondary btn-sm' do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+        <% end %>
+
+        <% if policy(comment).destroy? %>
           <%= link_to discussion_comment_path(@discussion, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>
