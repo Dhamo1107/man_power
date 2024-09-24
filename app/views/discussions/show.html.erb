@@ -1,30 +1,50 @@
-<h1><%= @discussion.title %></h1>
-<p><%= @discussion.body %></p>
-<p>Posted by: <%= @discussion.user.full_name %> | <%= time_ago_in_words(@discussion.created_at) %> ago</p>
+<h3> <%= @discussion.title %></h3>
+<p class="discussion-body"><%= @discussion.body %></p>
+<p class="discussion-meta">
+  <i class="fas fa-user"></i> Posted by: <%= @discussion.user.full_name %> &nbsp; &nbsp;
+  <i class="fas fa-clock"></i> <%= time_ago_in_words(@discussion.created_at) %> ago
+</p>
 
 <% if @discussion.user == current_user %>
-  <%= link_to 'Edit', edit_discussion_path(@discussion), class: 'btn btn-secondary' %>
-  <%= link_to 'Delete', discussion_path(@discussion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div class="discussion-actions">
+    <%= link_to edit_discussion_path(@discussion), class: 'btn btn-secondary btn-sm' do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <%= link_to discussion_path(@discussion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
 <% end %>
 
 <hr>
+<br>
 
-<h2>Comments</h2>
+<% if @comments.present? %>
+  <h5>Comments Posted</h5>
 
-<% @comments.each do |comment| %>
-  <div class="comment">
-    <p><%= comment.body %></p>
-    <p>Posted by: <%= comment.user.full_name %> | <%= time_ago_in_words(comment.created_at) %> ago</p>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p class="comment-body"><%= comment.body %></p>
+      <p class="discussion-meta">
+        <i class="fas fa-user"></i> Posted by: <%= comment.user.full_name %> &nbsp; &nbsp;
+        <i class="fas fa-clock"></i> <%= time_ago_in_words(comment.created_at) %> ago
+      </p>
 
-    <% if comment.user == current_user %>
-      <%= link_to 'Edit', edit_discussion_comment_path(@discussion, comment), class: 'btn btn-secondary' %>
-      <%= link_to 'Delete', discussion_comment_path(@discussion, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-    <% end %>
-  </div>
-  <hr>
+      <% if comment.user == current_user %>
+        <div class="comment-actions">
+          <%= link_to edit_discussion_comment_path(@discussion, comment), class: 'btn btn-secondary btn-sm' do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to discussion_comment_path(@discussion, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
-
-<h3>Post a Comment</h3>
+<br>
+<h5><i class="fas fa-pencil-alt"></i> Post a New Comment</h5>
 
 <%= form_with(model: [@discussion, @comment], local: true) do |form| %>
   <div class="form-group">

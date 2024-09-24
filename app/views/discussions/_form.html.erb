@@ -2,7 +2,6 @@
   <% if discussion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
-
       <ul>
         <% discussion.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,17 +10,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="discussion-form">
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
+    <div class="form-group">
+      <%= form.label :body %>
+      <%= form.text_area :body, rows: 5, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="form-group">
+      <%= form.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

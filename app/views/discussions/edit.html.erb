@@ -1,8 +1,7 @@
-<h1>Editing discussion</h1>
+<h3>Editing Discussion</h3>
 <%= render "form", discussion: @discussion %>
 <br>
 
-<div>
-  <%= link_to "Show this discussion", @discussion %> |
-  <%= link_to "Back to discussions", discussions_path %>
+<div class="back-link">
+  <%= link_to "<i class='fas fa-arrow-left'></i> Back to discussion".html_safe, discussion_path, class: 'btn btn-secondary' %>
 </div>
