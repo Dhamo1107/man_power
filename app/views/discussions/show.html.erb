@@ -62,6 +62,17 @@
 <h5><i class="fas fa-pencil-alt"></i> Post a New Comment</h5>
 
 <%= form_with(model: [@discussion, @comment], local: true) do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@comment.errors.count, "error") %> prevented this comment from being posted:</h4>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= form.text_area :body, rows: 3, class: 'form-control' %>
   </div>
