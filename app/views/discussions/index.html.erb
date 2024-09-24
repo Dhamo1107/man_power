@@ -8,7 +8,7 @@
           <%= link_to discussion.title, discussion_path(discussion), class: 'discussion-link' %>
         </h3>
         <span>
-          <i class="discussion-meta fas fa-comments index-comment"></i> <%= discussion.comments_count %> comments
+          <i class="discussion-meta fas fa-comments"></i> <%= discussion.comments_count %> comments
         </span>
       </div>
       <p class="discussion-body"><%= truncate(discussion.body, length: 100) %></p>

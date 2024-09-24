@@ -1,29 +1,30 @@
-<h3> <%= @discussion.title %></h3>
-<p class="discussion-body"><%= @discussion.body %></p>
-<p class="discussion-meta">
-  <i class="fas fa-user"></i> Posted by: <%= @discussion.user.full_name %> &nbsp; &nbsp;
-  <% if @discussion.updated_at.present? && @discussion.updated_at > @discussion.created_at %>
-    <i class="fas fa-clock"></i> Updated <%= time_ago_in_words(@discussion.updated_at) %> ago
-  <% else %>
-    <i class="fas fa-clock"></i> Created <%= time_ago_in_words(@discussion.created_at) %> ago
-  <% end %>
-</p>
-
-<div class="discussion-actions">
-  <% if policy(@discussion).update? %>
-    <%= link_to edit_discussion_path(@discussion), class: 'btn btn-secondary btn-sm' do %>
-      <i class="fas fa-edit"></i>
+<div class="discussion">
+  <h3> <%= @discussion.title %></h3>
+  <p class="discussion-body"><%= @discussion.body %></p>
+  <p class="discussion-meta">
+    <i class="fas fa-user"></i> Posted by: <%= @discussion.user.full_name %> &nbsp; &nbsp;
+    <% if @discussion.updated_at.present? && @discussion.updated_at > @discussion.created_at %>
+      <i class="fas fa-clock"></i> Updated <%= time_ago_in_words(@discussion.updated_at) %> ago
+    <% else %>
+      <i class="fas fa-clock"></i> Created <%= time_ago_in_words(@discussion.created_at) %> ago
     <% end %>
-  <% end %>
+  </p>
 
-  <% if policy(@discussion).destroy? %>
-    <%= link_to discussion_path(@discussion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
-      <i class="fas fa-trash-alt"></i>
+  <div class="discussion-actions">
+    <% if policy(@discussion).update? %>
+      <%= link_to edit_discussion_path(@discussion), class: 'btn btn-secondary btn-sm' do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
     <% end %>
-  <% end %>
+
+    <% if policy(@discussion).destroy? %>
+      <%= link_to discussion_path(@discussion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<hr>
 <br>
 
 <% if @comments.present? %>
