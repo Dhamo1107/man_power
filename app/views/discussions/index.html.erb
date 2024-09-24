@@ -7,9 +7,14 @@
         <%= link_to discussion.title, discussion_path(discussion), class: 'discussion-link' %>
       </h3>
       <p class="discussion-body"><%= truncate(discussion.body, length: 100) %></p>
+      <p><i class="discussion-body fas fa-comments"></i> <%= discussion.comments_count %> comments</p>
       <p class="discussion-meta">
         <i class="fas fa-user"></i> Posted by: <%= discussion.user.full_name %> &nbsp; &nbsp;
-        <i class="fas fa-clock"></i> <%= time_ago_in_words(discussion.created_at) %> ago
+        <% if discussion.updated_at.present? && discussion.updated_at > discussion.created_at %>
+          <i class="fas fa-clock"></i> Updated <%= time_ago_in_words(discussion.updated_at) %> ago
+        <% else %>
+          <i class="fas fa-clock"></i> Created <%= time_ago_in_words(discussion.created_at) %> ago
+        <% end %>
       </p>
     </li>
   <% end %>

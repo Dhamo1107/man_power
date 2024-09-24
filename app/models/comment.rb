@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   #=====ASSOCIATIONS====================================================================================================
-  belongs_to :discussion
+  belongs_to :discussion, counter_cache: true
   belongs_to :user
 
   #=====VALIDATIONS=====================================================================================================

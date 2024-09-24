@@ -3,11 +3,11 @@ class DiscussionsController < ApplicationController
   before_action :authorize_discussion, only: [:edit, :update, :destroy]
 
   def index
-    @discussions = Discussion.includes(:user).all.order(created_at: :desc)
+    @discussions = Discussion.includes(:user).all.order(updated_at: :desc)
   end
 
   def show
-    @comments = @discussion.comments.includes(:user).order(created_at: :asc)
+    @comments = @discussion.comments.includes(:user).order(updated_at: :asc)
     @comment = Comment.new
   end
 

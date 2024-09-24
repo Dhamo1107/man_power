@@ -2,7 +2,11 @@
 <p class="discussion-body"><%= @discussion.body %></p>
 <p class="discussion-meta">
   <i class="fas fa-user"></i> Posted by: <%= @discussion.user.full_name %> &nbsp; &nbsp;
-  <i class="fas fa-clock"></i> <%= time_ago_in_words(@discussion.created_at) %> ago
+  <% if @discussion.updated_at.present? && @discussion.updated_at > @discussion.created_at %>
+    <i class="fas fa-clock"></i> Updated <%= time_ago_in_words(@discussion.updated_at) %> ago
+  <% else %>
+    <i class="fas fa-clock"></i> Created <%= time_ago_in_words(@discussion.created_at) %> ago
+  <% end %>
 </p>
 
 <div class="discussion-actions">
@@ -30,7 +34,11 @@
       <p class="comment-body"><%= comment.body %></p>
       <p class="discussion-meta">
         <i class="fas fa-user"></i> Posted by: <%= comment.user.full_name %> &nbsp; &nbsp;
-        <i class="fas fa-clock"></i> <%= time_ago_in_words(comment.created_at) %> ago
+        <% if comment.updated_at.present? && comment.updated_at > comment.created_at %>
+          <i class="fas fa-clock"></i> Updated <%= time_ago_in_words(comment.updated_at) %> ago
+        <% else %>
+          <i class="fas fa-clock"></i> Created <%= time_ago_in_words(comment.created_at) %> ago
+        <% end %>
       </p>
 
       <div class="comment-actions">
