@@ -2,6 +2,6 @@
 <%= render "form", comment: @comment %>
 <br>
 
-<div>
-  <%= link_to "Back to discussions", discussion_path(@discussion) %>
+<div class="back-link">
+  <%= link_to "<i class='fas fa-arrow-left'></i> Back to discussion".html_safe, discussion_path(@discussion), class: 'btn btn-secondary' %>
 </div>

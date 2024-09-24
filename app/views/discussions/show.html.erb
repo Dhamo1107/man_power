@@ -55,3 +55,7 @@
     <%= form.submit 'Post Comment', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<div class="back-link">
+  <%= link_to "<i class='fas fa-arrow-left'></i> Back to discussions".html_safe, discussions_path, class: 'btn btn-secondary' %>
+</div>
