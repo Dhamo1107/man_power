@@ -2,11 +2,11 @@ class DiscussionsController < ApplicationController
   before_action :set_discussion, only: %i[ show edit update destroy ]
 
   def index
-    @discussions = Discussion.all.order(created_at: :desc)
+    @discussions = Discussion.includes(:user).all.order(created_at: :desc)
   end
 
   def show
-    @comments = @discussion.comments.order(created_at: :asc)
+    @comments = @discussion.comments.includes(:user).order(created_at: :asc)
     @comment = Comment.new
   end
 
