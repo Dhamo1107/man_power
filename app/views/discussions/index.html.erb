@@ -3,11 +3,15 @@
 <ul class="discussion-list">
   <% @discussions.each do |discussion| %>
     <li class="discussion-item">
-      <h3 class="discussion-title">
-        <%= link_to discussion.title, discussion_path(discussion), class: 'discussion-link' %>
-      </h3>
+      <div class="discussion-row">
+        <h3 class="discussion-title">
+          <%= link_to discussion.title, discussion_path(discussion), class: 'discussion-link' %>
+        </h3>
+        <span>
+          <i class="discussion-meta fas fa-comments index-comment"></i> <%= discussion.comments_count %> comments
+        </span>
+      </div>
       <p class="discussion-body"><%= truncate(discussion.body, length: 100) %></p>
-      <p><i class="discussion-body fas fa-comments"></i> <%= discussion.comments_count %> comments</p>
       <p class="discussion-meta">
         <i class="fas fa-user"></i> Posted by: <%= discussion.user.full_name %> &nbsp; &nbsp;
         <% if discussion.updated_at.present? && discussion.updated_at > discussion.created_at %>
