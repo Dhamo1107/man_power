@@ -1,5 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :set_discussion, only: %i[ show edit update destroy ]
+  before_action :authorize_discussion, only: [:edit, :update, :destroy]
 
   def index
     @discussions = Discussion.includes(:user).all.order(created_at: :desc)
@@ -40,11 +41,15 @@ class DiscussionsController < ApplicationController
   end
 
   private
-    def set_discussion
-      @discussion = Discussion.find(params[:id])
-    end
+  def set_discussion
+    @discussion = Discussion.find(params[:id])
+  end
 
-    def discussion_params
-      params.require(:discussion).permit(:title, :body, :user_id)
-    end
+  def discussion_params
+    params.require(:discussion).permit(:title, :body, :user_id)
+  end
+
+  def authorize_discussion
+    authorize @discussion
+  end
 end

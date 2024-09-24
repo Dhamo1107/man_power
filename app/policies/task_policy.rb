@@ -19,7 +19,7 @@ class TaskPolicy < ApplicationPolicy
     when 'created'
       ['viewed']
     when 'viewed'
-      ['accepted', 'cancelled']
+      %w[accepted cancelled]
     when 'accepted'
       ['in_progress']
     when 'in_progress'
