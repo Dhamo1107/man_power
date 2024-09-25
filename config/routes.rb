@@ -31,4 +31,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get 'leaderboard/index' => 'leaderboard#index'
 end

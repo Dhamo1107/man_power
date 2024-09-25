@@ -34,7 +34,7 @@ class User < ApplicationRecord
     ["professions"]
   end
 
-  #=====SCOPES====================================================================================================
+  #=====SCOPES==========================================================================================================
   scope :search_by_name, ->(query) {
     where('full_name ILIKE ?', "%#{query}%")
   }
@@ -46,8 +46,34 @@ class User < ApplicationRecord
       .to_f.round(2)
   }
 
+  #=====METHODS=========================================================================================================
   def task_created_by_current_user?(current_user)
     assigned_tasks.where(created_by_user_id: current_user.id).exists?
+  end
+
+  # Calculate the user's average rating from tasks assigned to them
+  def average_rating
+    assigned_tasks.joins(:rating).average('ratings.rating') || 0.0
+  end
+
+  # Count the number of completed tasks
+  def completed_tasks_count
+    assigned_tasks.where(status: 'completed').count
+  end
+
+  # Combine completed tasks and average rating for leaderboard score
+  def leaderboard_score
+    (completed_tasks_count * 0.5) + (average_rating * 0.5)
+  end
+
+  # Calculate user's rank based on leaderboard score
+  def user_rank
+    User.all.sort_by(&:leaderboard_score).reverse.index(self) + 1
+  end
+
+  # Total number of users in the application
+  def self.total_users
+    User.count
   end
 
   private
