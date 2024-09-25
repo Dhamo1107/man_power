@@ -37,7 +37,7 @@
         <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' %>
       </div>
       <div class="app-info">
-        <span>Total Users: <%= User.count %></span>
+        <span>Total Users: <%= User.total_users %></span>
       </div>
     </div>
 

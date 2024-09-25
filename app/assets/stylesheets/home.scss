@@ -528,7 +528,7 @@ h2, h4 {
 
 .detail-item {
   display: grid;
-  grid-template-columns: 18px 150px 1fr; /* Set fixed widths for icons and labels, and flexible width for details */
+  grid-template-columns: 25px 165px 1fr; /* Set fixed widths for icons and labels, and flexible width for details */
   align-items: center;
 }
 
