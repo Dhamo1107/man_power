@@ -63,7 +63,7 @@ class User < ApplicationRecord
 
   # Combine completed tasks and average rating for leaderboard score
   def leaderboard_score
-    (completed_tasks_count * 0.5) + (average_rating * 0.5)
+    (completed_tasks_count * 0.2) + (average_rating * 5)
   end
 
   # Calculate user's rank based on leaderboard score
