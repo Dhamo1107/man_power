@@ -98,6 +98,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.1)
     erubi (1.13.0)
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
@@ -203,6 +204,23 @@ GEM
       railties (>= 5.2)
     rexml (3.3.4)
       strscan
+    rspec-core (3.13.1)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (7.0.1)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.1)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -277,6 +295,7 @@ DEPENDENCIES
   pundit (~> 2.3.2)
   rails (~> 7.0.8, >= 7.0.8.1)
   ransack
+  rspec-rails (~> 7.0.0)
   sassc-rails
   select2-rails (~> 4.0, >= 4.0.3)
   selenium-webdriver
