@@ -9,10 +9,11 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #index" do
+    login_user
     it "assigns users excluding the current user" do
       get :index
       expect(assigns(:users)).to include(other_user)
-      expect(assigns(:users)).not_to include(user)
+      expect(assigns(:users)).not_to include(subject.current_user)
     end
 
     it "renders the index template" do
@@ -28,6 +29,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #show" do
+    login_user
     it "assigns the requested user" do
       get :show, params: { id: user.id }
       expect(assigns(:user)).to eq(user)

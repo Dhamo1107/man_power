@@ -44,6 +44,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryBot::Syntax::Methods
+  config.extend ControllerMacros, type: :controller
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -67,4 +68,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+
 end

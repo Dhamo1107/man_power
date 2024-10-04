@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
     full_name { "John Doe" }
-    user_name { "johndoe123" }
-    email { "john.doe@example.com" }
+    sequence(:user_name) { |n| "johndoe#{n}" }
+    sequence(:email) { |n| "john.doe#{n}@example.com" }
     phone_number { "1234567890" }
     date_of_birth { "1990-01-01" }
     experience_years { 5 }
