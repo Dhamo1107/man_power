@@ -50,8 +50,20 @@ RSpec.describe User, type: :model do
         expect(valid_user.errors[:phone_number]).to include("can't be blank")
       end
 
-      it "must be a 10-digit number" do
+      it "must be a 10-digit number (if less then 10 digits)" do
         valid_user.phone_number = '12345'
+        expect(valid_user).to_not be_valid
+        expect(valid_user.errors[:phone_number]).to include("must be a 10-digit number")
+      end
+
+      it "must be a 10-digit number (if greater than digits)" do
+        valid_user.phone_number = '12345678912345'
+        expect(valid_user).to_not be_valid
+        expect(valid_user.errors[:phone_number]).to include("must be a 10-digit number")
+      end
+
+      it "must be a 10-digit number (if it contains alphabets)" do
+        valid_user.phone_number = '123456789a'
         expect(valid_user).to_not be_valid
         expect(valid_user.errors[:phone_number]).to include("must be a 10-digit number")
       end
@@ -96,8 +108,20 @@ RSpec.describe User, type: :model do
         expect(valid_user.errors[:pin_code]).to include("can't be blank")
       end
 
-      it "must be a 6-digit number" do
+      it "must be a 6-digit number (if less than 6 digits)" do
         valid_user.pin_code = '123'
+        expect(valid_user).to_not be_valid
+        expect(valid_user.errors[:pin_code]).to include("must be a 6-digit number")
+      end
+
+      it "must be a 6-digit number (if greater than 6 digits)" do
+        valid_user.pin_code = '1234567'
+        expect(valid_user).to_not be_valid
+        expect(valid_user.errors[:pin_code]).to include("must be a 6-digit number")
+      end
+
+      it "must be a 6-digit number (if contains alphabets)" do
+        valid_user.pin_code = '12345a'
         expect(valid_user).to_not be_valid
         expect(valid_user.errors[:pin_code]).to include("must be a 6-digit number")
       end
