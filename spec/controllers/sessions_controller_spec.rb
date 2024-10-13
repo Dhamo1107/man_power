@@ -37,6 +37,23 @@ RSpec.describe Devise::SessionsController, type: :controller do
         sign_in user
         get :new
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to eq("You are already signed in.")
+        expect(response).to have_http_status(:found)
+      end
+    end
+
+    context "when logging out" do
+      it "redirects the user to the login page" do
+        user = create(:user)
+        sign_in user
+
+        # Simulate logging out
+        delete :destroy, params: { id: user.id }
+
+        # Check the redirection to the login page
+        expect(response).to redirect_to(new_user_session_path)
+        expect(flash[:notice]).to eq("Signed out successfully.")
+        expect(response).to have_http_status(:see_other)
       end
     end
   end
