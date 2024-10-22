@@ -7,17 +7,17 @@ RSpec.describe Devise::RegistrationsController, type: :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new user' do
+        profession = create(:profession)
         expect {
-          user = create(:user, email: 'dhamodoe@example.com', password: 'password123')
-          post :create, params: { user: { email: user.email, password: 'password123' } }
-          user = assigns(:user)
-          if user.errors.any?
-            puts "Validation Errors: #{user.errors.full_messages.join(', ')}"
-          end
+          post :create, params: {
+            user: {
+              full_name: "test", user_name: "_test_", phone_number: "9999999999", email: "cccc@gmail.com", password: "password123", password_confirmation: "password123",
+              date_of_birth: "2005-10-22", experience_years: 1, district: "Salem", pin_code: "638145", address: "salem", profession_ids: [profession.id]
+            }
+          }
         }.to change(User, :count).by(1)
         expect(response).to redirect_to(root_path)
-        expect(response).to have_http_status(302)
-        expect(flash[:notice]).to eq('User was successfully created.')
+        expect(flash[:notice]).to eq('Welcome! You have signed up successfully.')
       end
     end
 
